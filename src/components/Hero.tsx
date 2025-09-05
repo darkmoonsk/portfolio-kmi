@@ -74,7 +74,7 @@ export function Hero() {
               size="lg"
               className="cursor-pointer font-bangers"
             >
-              Contato
+              Contacto
             </Button>
           </div>
         </motion.div>

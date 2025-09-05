@@ -7,7 +7,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card3D } from "./Card3D";
 import { GalleryItem, GALLERY } from "@/app/constants/gallery";
 
 const FRANCHISES = ["Todos"];
@@ -107,77 +106,73 @@ export function Gallery({ onItemClick }: GalleryProps) {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 style={{ transformStyle: "preserve-3d" }}
               >
-                <Card3D intensity={10}>
-                  <Card
-                    className="overflow-hidden group cursor-pointer h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-card/50 backdrop-blur-sm"
-                    onClick={() => onItemClick(item)}
-                  >
-                    <div className="relative aspect-[4/5] overflow-hidden">
-                      <img
-                        src={item.src}
-                        alt={item.title}
-                        className="size-full object-cover transition-all duration-500 group-hover:scale-110"
-                      />
+                <Card
+                  className="overflow-hidden group cursor-pointer h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-card/50 backdrop-blur-sm
+                      py-0
+                    "
+                  onClick={() => onItemClick(item)}
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <img
+                      src={item.src}
+                      alt={item.title}
+                      className="size-full object-cover transition-all duration-500 group-hover:scale-110"
+                    />
 
-                      {/* Overlay gradiente melhorado */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
 
-                      {/* Overlay de brilho no hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
-
-                      {/* Informações do personagem */}
-                      <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
-                        <div className="space-y-1">
-                          <p className="text-white/90 text-sm font-poppins-medium">
-                            {item.character}
-                          </p>
-                          <p className="text-white font-bangers text-lg leading-tight">
-                            {item.title}
-                          </p>
-                        </div>
-                        <Badge
-                          variant="secondary"
-                          className="backdrop-blur-md bg-white/90 text-black font-poppins-semibold shadow-lg"
-                        >
-                          {item.year}
-                        </Badge>
+                    {/* Informações do personagem */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                      <div className="space-y-1">
+                        <p className="text-white/90 text-sm font-poppins-medium">
+                          {item.character}
+                        </p>
+                        <p className="text-white font-bangers text-lg leading-tight">
+                          {item.title}
+                        </p>
                       </div>
-
-                      {/* Indicador de likes */}
-                      <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <div className="bg-black/50 backdrop-blur-md rounded-full px-2 py-1 flex items-center gap-1">
-                          <span className="text-red-400 text-sm">❤</span>
-                          <span className="text-white text-sm font-poppins-medium">
-                            {item.likes?.toLocaleString()}
-                          </span>
-                        </div>
-                      </div>
+                      <Badge
+                        variant="secondary"
+                        className="backdrop-blur-md bg-white/90 text-black font-poppins-semibold shadow-lg"
+                      >
+                        {item.year}
+                      </Badge>
                     </div>
 
-                    {/* Tags melhoradas */}
-                    <CardContent className="p-4 bg-card/80 backdrop-blur-sm">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {item.tags.slice(0, 3).map((t) => (
-                          <Badge
-                            key={t}
-                            variant="outline"
-                            className="font-poppins text-xs border-primary/30 text-primary hover:bg-primary/10 transition-colors"
-                          >
-                            {t}
-                          </Badge>
-                        ))}
-                        {item.tags.length > 3 && (
-                          <Badge
-                            variant="outline"
-                            className="font-poppins text-xs"
-                          >
-                            +{item.tags.length - 3}
-                          </Badge>
-                        )}
+                    {/* Indicador de likes */}
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="bg-black/50 backdrop-blur-md rounded-full px-2 py-1 flex items-center gap-1">
+                        <span className="text-red-400 text-sm">❤</span>
+                        <span className="text-white text-sm font-poppins-medium">
+                          {item.likes?.toLocaleString()}
+                        </span>
                       </div>
-                    </CardContent>
-                  </Card>
-                </Card3D>
+                    </div>
+                  </div>
+
+                  <CardContent className="p-4 bg-card/80 backdrop-blur-sm">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {item.tags.slice(0, 3).map((t) => (
+                        <Badge
+                          key={t}
+                          variant="outline"
+                          className="font-poppins text-xs border-primary/30 text-primary hover:bg-primary/10 transition-colors"
+                        >
+                          {t}
+                        </Badge>
+                      ))}
+                      {item.tags.length > 3 && (
+                        <Badge
+                          variant="outline"
+                          className="font-poppins text-xs"
+                        >
+                          +{item.tags.length - 3}
+                        </Badge>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </AnimatePresence>
