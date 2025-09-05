@@ -4,7 +4,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { UserRound, MapPin, Wand2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card3D } from "./Card3D";
 import { FloatingElements3D } from "./FloatingElements3D";
 import { Text3D } from "./Text3D";

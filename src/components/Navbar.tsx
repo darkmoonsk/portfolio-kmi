@@ -1,18 +1,8 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import {
-  Camera,
-  Mail,
-  CalendarDays,
-  Sparkles,
-  Link2,
-  Moon,
-  SunMedium,
-} from "lucide-react";
+import { Link2, Moon, SunMedium } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import {
   Tooltip,

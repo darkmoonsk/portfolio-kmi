@@ -126,7 +126,7 @@ export default function EnergyBeamBackground({
 }: EnergyBeamProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
-  const uniformsRef = useRef<any>(null);
+  const uniformsRef = useRef<{ [key: string]: THREE.IUniform } | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const roRef = useRef<ResizeObserver | null>(null);
 
@@ -153,7 +153,7 @@ export default function EnergyBeamBackground({
       return new THREE.Vector3(c.r, c.g, c.b);
     };
 
-    const uniforms: any = {
+    const uniforms = {
       u_res: {
         value: new THREE.Vector2(
           renderer.domElement.width,
@@ -215,7 +215,7 @@ export default function EnergyBeamBackground({
     const start = performance.now();
     const tick = () => {
       if (!rendererRef.current) return;
-      uniformsRef.current.u_time.value = (performance.now() - start) / 1000.0;
+      uniformsRef.current!.u_time.value = (performance.now() - start) / 1000.0;
       rendererRef.current.render(scene, camera);
       rafRef.current = requestAnimationFrame(tick);
     };
@@ -239,7 +239,7 @@ export default function EnergyBeamBackground({
 
   // 2) UPDATES — quando as props mudam, atualiza uniforms sem recriar renderer
   useEffect(() => {
-    const u = uniformsRef.current as any;
+    const u = uniformsRef.current;
     if (!u) return;
 
     const toVec3 = (hex: string) => {

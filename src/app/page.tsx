@@ -9,7 +9,6 @@ import { Gallery } from "@/components/Gallery";
 import { GalleryModal } from "@/components/GalleryModal";
 import { About } from "@/components/About";
 import { Footer } from "@/components/Footer";
-import { Background3D } from "@/components/Background3D";
 import { GalleryItem } from "./constants/gallery";
 import EnergyBeamBackground from "@/components/EnergyBeamBackground";
 
