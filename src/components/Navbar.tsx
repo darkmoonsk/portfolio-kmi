@@ -33,7 +33,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-2">
             {SOCIALS.map((s) => (
               <Tooltip key={s.name}>
                 <TooltipTrigger asChild>
@@ -73,6 +73,25 @@ export function Navbar() {
             </Button>
           </a>
         </div>
+      </div>
+      <div className="flex sm:hidden mb-2 items-center gap-2 justify-center">
+        {SOCIALS.map((s) => (
+          <Tooltip key={s.name}>
+            <TooltipTrigger asChild>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg hover:bg-accent transition-colors"
+              >
+                <s.icon className="size-4" />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{s.name}</p>
+            </TooltipContent>
+          </Tooltip>
+        ))}
       </div>
     </header>
   );

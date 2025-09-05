@@ -45,7 +45,7 @@ export function Gallery({ onItemClick }: GalleryProps) {
   return (
     <>
       {/* CONTROLES */}
-      <section className="max-w-6xl mx-auto px-4">
+      <section className="max-w-6xl mx-auto px-4 flex-col sm:flex-row">
         <Card>
           <CardContent className="py-4 flex flex-wrap gap-3 items-center justify-between">
             <div className="flex items-center gap-3">
