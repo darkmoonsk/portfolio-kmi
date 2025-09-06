@@ -7,7 +7,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border/50">
+    <footer className="border-t border-border/50 bg-white/60 dark:bg-black/60">
       <div className="max-w-6xl mx-auto px-4 py-8 text-sm text-muted-foreground flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <span>© {year} KMI Cosplay. Todos los derechos reservados.</span>
