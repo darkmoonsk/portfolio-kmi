@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider, useTheme } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
@@ -10,11 +10,20 @@ import { GalleryModal } from "@/components/GalleryModal";
 import { About } from "@/components/About";
 import { Footer } from "@/components/Footer";
 import { GalleryItem } from "./constants/gallery";
-import EnergyBeamBackground from "@/components/EnergyBeamBackground";
+import VideoBackground from "@/components/VideoBackground";
 
-function CosplayPortfolioContent() {
+function CosplayPortfolioContent({
+  setPageLoaded,
+}: {
+  setPageLoaded: (loaded: boolean) => void;
+}) {
   const { mounted, themeDark } = useTheme();
   const [active, setActive] = useState<GalleryItem | null>(null);
+
+  useEffect(() => {
+    setPageLoaded(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Prevent hydration mismatch by not rendering theme-dependent content until mounted
   if (!mounted) {
@@ -52,17 +61,12 @@ function CosplayPortfolioContent() {
 }
 
 export default function CosplayPortfolio() {
+  const [pageLoaded, setPageLoaded] = useState(false);
+
   return (
     <ThemeProvider>
-      <EnergyBeamBackground
-        beamColorA="#6b21a8" // roxo escuro
-        beamColorB="#c026d3" // magenta para as listras
-        coreColor="#f5e1ff" // quase branco
-        speed={1.0}
-        intensity={1.1}
-        opacity={0.9}
-      />
-      <CosplayPortfolioContent />
+      {pageLoaded && <VideoBackground />}
+      <CosplayPortfolioContent setPageLoaded={setPageLoaded} />
     </ThemeProvider>
   );
 }
