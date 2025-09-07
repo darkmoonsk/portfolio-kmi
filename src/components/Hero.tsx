@@ -67,7 +67,7 @@ export function Hero() {
               size="lg"
               className="cursor-pointer font-bangers font-medium"
             >
-              Ver Portfolio
+              Ver Portafolio
             </Button>
             <Button
               variant="outline"
