@@ -72,7 +72,7 @@ export function Gallery({ onItemClick }: GalleryProps) {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Buscar personaje, Tag..."
-                  className="pl-8 w-64"
+                  className="pl-8 w-48"
                 />
               </div>
 

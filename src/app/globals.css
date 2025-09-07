@@ -181,3 +181,85 @@
     letter-spacing: 0.01em;
   }
 }
+
+/* wrapper */
+.cp-wrap {
+  position: relative;
+  width: var(--cp-size);
+  height: var(--cp-size);
+  display: grid;
+  place-items: center;
+  isolation: isolate; /* garante blend correto */
+}
+
+/* imagem redonda, sem borda nem halo */
+.cp-img {
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* ---------- ANEL NEON ---------- */
+.cp-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  z-index: 1;
+  background: conic-gradient(
+    from 0deg,
+    #6b21a8 0%,
+    #c026d3 25%,
+    #3b82f6 50%,
+    #6b21a8 75%,
+    #c026d3 100%
+  );
+
+  /* Agora recortamos de dentro para fora */
+  -webkit-mask: radial-gradient(
+    closest-side,
+    #000 calc(100% - var(--cp-ring)),
+    transparent 0
+  );
+  mask: radial-gradient(
+    closest-side,
+    #000 calc(100% - var(--cp-ring)),
+    transparent 0
+  );
+
+  animation: cp-spin var(--cp-speed) linear infinite;
+}
+
+/* Glow externo suave (sem preencher o centro) */
+.cp-ring::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--cp-ring) * -2);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(107, 33, 168, 0.35),
+    rgba(192, 38, 211, 0.35),
+    rgba(59, 130, 246, 0.35),
+    rgba(107, 33, 168, 0.35)
+  );
+  filter: blur(calc(var(--cp-ring) * 1.8));
+
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - var(--cp-ring) * 3),
+    #000 0
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - var(--cp-ring) * 3),
+    #000 0
+  );
+
+  animation: cp-spin calc(var(--cp-speed) * 1.8) linear infinite reverse;
+  z-index: -1;
+}
+
+@keyframes cp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
