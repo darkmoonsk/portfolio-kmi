@@ -53,25 +53,6 @@ function CosplayPortfolioContent({
         <Navbar />
         <div>
           <Hero />
-          <div className="flex flex-col items-center justify-center px-4 mb-4 -mt-16">
-            <Link href="https://www.enelsofa.com/sofa2025/" target="_blank">
-              <CircleOfPower
-                src="/SOFA.jpg"
-                size={480}
-                ringWidth={60}
-                speed={2}
-              />
-            </Link>
-            <p className="text-2xl font-poppins text-center -mt-12 font-extrabold bg-gradient-to-r from-purple-700 via-pink-700 to-blue-500 bg-clip-text text-transparent">
-              Presencia confirmada en SOFA 2025
-            </p>
-            <h3 className="text-4xl font-bangers text-center mt-2 ">
-              Faltan <span className="text-blue-500">{days}</span> días{" "}
-              <span className="text-blue-500">{hours}</span> horas{" "}
-              <span className="text-blue-500">{minutes}</span> minutos{" "}
-              <span className="text-blue-500">{seconds}</span> segundos{" "}
-            </h3>
-          </div>
           <Gallery onItemClick={setActive} />
         </div>
         <GalleryModal active={active} onClose={() => setActive(null)} />
